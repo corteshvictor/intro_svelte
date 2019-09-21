@@ -1,69 +1,25 @@
-*Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Simple example with Svelte
 
----
+### Getting Started
 
-# svelte app
+There are two methods for getting started with this repo.
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+#### Familiar with Git?
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+Checkout this repo, install dependencies, then start the gulp process with the following:
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+```
+> git clone https://github.com/victorhcortes/intro_svelte.git
+> cd intro_svelte
+> npm install
+> npm start
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+#### Not Familiar with Git?
 
+Click [here](https://github.com/victorhcortes/intro_svelte.git) then download the .zip file. Extract the contents of the zip file, then open your terminal, change to the project directory, and:
 
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
 ```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
+> npm install
+> npm run dev
 ```
