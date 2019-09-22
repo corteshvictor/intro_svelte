@@ -8,12 +8,16 @@
 </script>
 
 <style>
-  article {
+  div {
     cursor: pointer;
+  }
+
+  h4 {
+    text-align: center;
   }
 </style>
 
-<article on:click={() => dispatch('selectitem', { id })}>
-  <h1>{name}</h1>
+<div on:click={() => dispatch('selectitem', { id })}>
+  <h4>{name}</h4>
   <img alt={name} src={image} />
-</article>
+</div>
