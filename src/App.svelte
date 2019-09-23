@@ -1,9 +1,9 @@
 <script>
   import getCharacters from "./data.js";
-  import DogItem from "../components/DogItem.svelte";
-  import Modal from "../components/Modal.svelte";
-  import Pagination from "../components/Pagination.svelte";
-  import Loading from "../components/Loading.svelte";
+  import DogItem from "./components/DogItem.svelte";
+  import Modal from "./components/Modal.svelte";
+  import Pagination from "./components/Pagination.svelte";
+  import Loading from "./components/Loading.svelte";
 
   let info = {};
   let characters = [];
