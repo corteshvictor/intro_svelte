@@ -1,6 +1,6 @@
 <script>
   import getCharacters from "./data.js";
-  import DogItem from "./components/DogItem.svelte";
+  import Character from "./components/Character.svelte";
   import Modal from "./components/Modal.svelte";
   import Pagination from "./components/Pagination.svelte";
   import Loading from "./components/Loading.svelte";
@@ -87,7 +87,7 @@
 {:else}
   <section class="characters">
     {#each characters as { name, image, id }, index}
-      <DogItem {name} {image} {id} on:selectitem={selectItemHandler} />
+      <Character {name} {image} {id} on:selectitem={selectItemHandler} />
     {/each}
   </section>
 {/if}
