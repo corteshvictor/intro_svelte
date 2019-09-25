@@ -1,21 +1,30 @@
 <script>
-  import getCharacters from "./data.js";
+  import { onMount } from "svelte";
+  import { getCharacters } from "./data.js";
+  import { characters } from "./stores.js";
   import Character from "./components/Character.svelte";
   import Modal from "./components/Modal.svelte";
   import Pagination from "./components/Pagination.svelte";
   import Loading from "./components/Loading.svelte";
+  import Search from "./components/Search.svelte";
 
   let info = {};
-  let characters = [];
+  let characters_value = [];
   let selectedCaharacter = null;
   let loading = false;
+  let currentPage = 1;
 
-  const changePage = params => {
+  onMount(() => changePage(currentPage));
+
+  const unsubscribe = characters.subscribe(value => {
+    characters_value = value;
+  });
+
+  const changePage = page => {
     loading = true;
-
-    getCharacters(params)
+    getCharacters(page)
       .then(data => {
-        characters = data.results;
+        characters_value = data.results;
         info = data.info;
       })
       .catch(error => {
@@ -26,18 +35,18 @@
       });
   };
 
-  changePage();
-
   const selectItemHandler = event => {
     const { id } = event.detail;
-    selectedCaharacter = characters.find(character => character.id === id);
+    selectedCaharacter = characters_value.find(
+      character => character.id === id
+    );
   };
 
   const closeModalHandler = () => (selectedCaharacter = null);
 
   const handleChangePage = ({ detail }) => {
-    const page = detail;
-    changePage(page);
+    currentPage = detail;
+    changePage(detail);
   };
 </script>
 
@@ -80,13 +89,15 @@
 <header class="header" />
 <h1>Our characters</h1>
 
+<Search />
+
 {#if loading}
   <section class="spinner">
     <Loading />
   </section>
 {:else}
   <section class="characters">
-    {#each characters as { name, image, id }, index}
+    {#each characters_value as { name, image, id }, index}
       <Character {name} {image} {id} on:selectitem={selectItemHandler} />
     {/each}
   </section>
@@ -98,11 +109,12 @@
     <div class="detail-content">
       <p>species: {selectedCaharacter.species}</p>
       <p>gender: {selectedCaharacter.gender}</p>
+      <p>status: {selectedCaharacter.status}</p>
       <img alt={selectedCaharacter.name} src={selectedCaharacter.image} />
     </div>
   </Modal>
 {/if}
 
 <footer class="footer">
-  <Pagination {info} on:change={handleChangePage} />
+  <Pagination {info} on:change={handleChangePage} {currentPage} />
 </footer>

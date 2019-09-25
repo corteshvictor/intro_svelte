@@ -3,13 +3,14 @@
   import { createEventDispatcher } from "svelte";
 
   export let info;
+  export let currentPage;
 
   const dispatch = createEventDispatcher();
 
   const changePage = page => {
-    // if (page !== current_page) {
-    dispatch("change", page);
-    // }
+    if (page !== currentPage) {
+      dispatch("change", page);
+    }
   };
 </script>
 
